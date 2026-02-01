@@ -1,0 +1,44 @@
+<script>
+const results = {
+  154428:{mcq:5, cq:3},
+  154426:{mcq:16, cq:16},
+  154422:{mcq:6, cq:13.5},
+  154427:{mcq:6, cq:6.5},
+  154423:{mcq:8, cq:7.5},
+  154424:{mcq:5, cq:5.5},
+  154421:{mcq:9, cq:5.5},
+  154420:{mcq:14, cq:7},
+  154425:{mcq:10, cq:6}
+};
+
+function checkResult(){
+  let roll = document.getElementById("roll").value;
+  let out = document.getElementById("output");
+
+  if(!results[roll]){
+    out.innerHTML = "❌ রোল নম্বর পাওয়া যায়নি";
+    return;
+  }
+
+  let mcq = results[roll].mcq;
+  let cq = results[roll].cq;
+  let total = mcq + cq;
+
+  if(total >= 25){
+    out.innerHTML = `
+    <p class="pass">🎉 অভিনন্দন! আপনি PASS করেছেন</p>
+    MCQ: ${mcq}<br>
+    CQ: ${cq}<br>
+    Total: ${total}
+    `;
+  }else{
+    out.innerHTML = `
+    <p class="fail">❌ আপনি FAIL করেছেন</p>
+    MCQ: ${mcq}<br>
+    CQ: ${cq}<br>
+    Total: ${total}<br>
+    👉 পড়ালেখায় আরও মনোযোগী হতে হবে
+    `;
+  }
+}
+</script>
